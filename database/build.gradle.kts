@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)
 }
 
 android {
-    namespace = "com.andy.data"
+    namespace = "com.andy.database"
     compileSdk = 35
 
     buildTypes {
@@ -26,8 +27,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":model"))
-    implementation(project(":database"))
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
