@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Notes Application</string>
+    <string name="app_name">Your Notes</string>
+    <string name="your_notes">Your Notes</string>
+    <string name="you_dont_have_any_note_please_add_one">You don\'t have any note,\nplease add one!</string>
+    <string name="here_are_all_your_notes">Here are all your notes!</string>
+    <string name="something_went_wrong">Something went wrong!</string>
+    <string name="un_title">Untitled</string>
+    <string name="content">Content</string>
+    <string name="delete_note">Delete Note</string>
+    <string name="title_cannot_be_empty">Title cannot be empty!</string>
+    <string name="add_note_failed">Add note failed!</string>
+    <string name="save_note_failed">Save note failed!</string>
+    <string name="delete_note_failed">Delete note failed!</string>
+    <string name="delete_note_successfully">Delete note successfully!</string>
+    <string name="cannot_load_note_detail">Cannot load note detail!</string>
+    <string name="do_you_want_to_delete_this_note">Do you want to delete this note?</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>
