@@ -1,4 +1,4 @@
-package com.andy.data.model
+package com.andy.data.mapper
 
 import com.andy.database.entity.NoteEntity
 import com.andy.model.Note
