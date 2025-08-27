@@ -1,6 +1,5 @@
 package com.andy.notesapplication.screens.list
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -23,16 +22,20 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.andy.model.Note
 import com.andy.notesapplication.R
 import com.andy.notesapplication.ui.components.ConfirmDialog
 import com.andy.notesapplication.ui.components.NoteItem
 import com.andy.notesapplication.ui.components.NoteListMessage
+import kotlinx.coroutines.flow.flowOf
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteListContent(
     pagedNotes: LazyPagingItems<Note>,
@@ -45,7 +48,7 @@ fun NoteListContent(
         mutableStateOf(NoteListDeleteDialogState.Hide)
     }
 
-    when(val dialogState = deleteDialogState) {
+    when (val dialogState = deleteDialogState) {
         is NoteListDeleteDialogState.Show -> {
             ConfirmDialog(
                 title = stringResource(R.string.delete_note),
@@ -127,4 +130,31 @@ fun NoteListContent(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun NoteListContentPreview() {
+    val sampleNotes = listOf(
+        Note(id = 1, title = "First Note", content = "Hello World", updatedAt = 1L),
+        Note(id = 2, title = "Second Note", content = "Hello World 123", updatedAt = 2L),
+        Note(
+            id = 3,
+            title = "Long title Long title Long title Long title Long title  Long title Long titleLong title Long title Long title",
+            content = "Long content Long content Long content Long content Long content Long content Long content Long content Long content",
+            updatedAt = 3L
+        )
+    )
+
+    // Fake paging data for preview
+    val pagingFlow = remember { flowOf(PagingData.from(sampleNotes)) }
+    val lazyPagingItems = pagingFlow.collectAsLazyPagingItems()
+
+    NoteListContent(
+        pagedNotes = lazyPagingItems,
+        snackBarHostState = SnackbarHostState(),
+        onNoteClick = {},
+        onDeleteButtonClick = {},
+        onAddClick = {}
+    )
 }

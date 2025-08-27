@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -66,4 +67,15 @@ fun NoteItem(
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun NoteItemPreview() {
+    NoteItem(
+        title = "My Note",
+        content = "This is my note content",
+        onClick = {},
+        onLongClick = {}
+    )
 }

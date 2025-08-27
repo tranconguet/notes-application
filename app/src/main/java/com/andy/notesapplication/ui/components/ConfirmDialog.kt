@@ -8,6 +8,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -59,5 +60,18 @@ fun ConfirmDialog(
         },
         shape = RoundedCornerShape(16.dp),
         containerColor = MaterialTheme.colorScheme.surface
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ConfirmDialogPreview() {
+    ConfirmDialog(
+        title = "Delete Note",
+        message = "Are you sure you want to delete this note?",
+        confirmText = "Delete",
+        cancelText = "Cancel",
+        onConfirm = {},
+        onDismiss = {}
     )
 }

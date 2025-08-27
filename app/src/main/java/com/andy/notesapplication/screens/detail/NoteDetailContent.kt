@@ -30,8 +30,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.andy.model.Note
 import com.andy.notesapplication.R
 import com.andy.notesapplication.ui.components.ConfirmDialog
 import com.andy.notesapplication.utils.safeClickable
@@ -175,4 +177,25 @@ fun NoteDetailContent(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun NoteDetailContentPreview() {
+    NoteDetailContent(
+        noteDetailState = NoteDetailUiState.Success(
+            Note(
+                id = 1,
+                title = "My Note",
+                content = "This is my note content",
+                updatedAt = System.currentTimeMillis()
+            )
+        ),
+        snackBarHostState = SnackbarHostState(),
+        updateNote = { _, _ -> },
+        addNote = { _, _ -> },
+        onDeleteNote = {},
+        showEmptyTitleMessage = {},
+        navigateBack = {}
+    )
 }
