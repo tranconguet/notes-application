@@ -146,7 +146,6 @@ fun NoteListContentPreview() {
         )
     )
 
-    // Fake paging data for preview
     val pagingFlow = remember { flowOf(PagingData.from(sampleNotes)) }
     val lazyPagingItems = pagingFlow.collectAsLazyPagingItems()
 
